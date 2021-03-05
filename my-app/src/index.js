@@ -3,15 +3,51 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { createStore } from 'redux';
+import allReducers from './reducers';
+import { Provider } from 'react-redux';
+
+
+//store
+let store = createStore(
+  allReducers,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
+
 
 ReactDOM.render(
-  <React.StrictMode>
+  <Provider store={store}>
     <App />
-  </React.StrictMode>,
+  </Provider>,
   document.getElementById('root')
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+//action: function that returns an object
+// const increment = function () {
+//   return {
+//     type: 'INCREMENT',
+//   }
+// }
+// const decrement = function () {
+//   return {
+//     type: 'DECREMENT'
+//   }
+// }
+
+//reducer: (state, action) => new_state
+// const counter = function (state = 0, action) {
+//   switch (action.type) {
+//     case 'INCREMENT':
+//       return state + 1;
+
+//     case 'DECREMENT':
+//       return state - 1;
+//   }
+// }
+
+
+
+
+
+//dispatch
+// store.dispatch(increment())

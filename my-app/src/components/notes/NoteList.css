@@ -1,0 +1,13 @@
+.NotesContainer {
+    width: 30%;
+    margin: 30px;
+    padding: 20px;
+    border-radius: 3px;
+    box-shadow: 4px 4px 2px #888888;
+    float: left;
+}
+
+.delete {
+    float: right;
+    cursor: pointer;
+}
