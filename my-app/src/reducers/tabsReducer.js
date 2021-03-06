@@ -5,8 +5,8 @@ const initialSelectedTab = tabs[0].id;
 const tabsReducer = (state = initialSelectedTab, action) => {
   switch (action.type) {
     case "SELECT_TAB":
-      state = action.payload.tabId;
-      return state;
+      const newState = action.payload.tabId;
+      return newState;
 
     default:
       return state;

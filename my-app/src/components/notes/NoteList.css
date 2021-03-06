@@ -1,13 +1,28 @@
-.NotesContainer {
-    width: 30%;
-    margin: 30px;
-    padding: 20px;
-    border-radius: 3px;
-    box-shadow: 4px 4px 2px #888888;
-    float: left;
+.delete {
+  float: right;
+  cursor: pointer;
 }
 
-.delete {
-    float: right;
-    cursor: pointer;
+.notes-action-container {
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid #e2e2e2;
+  flex-wrap: wrap;
+}
+
+.notes-action-type {
+  color: blue;
+  font-size: 10px;
+  cursor: pointer;
+  padding: 10px;
+  text-transform: uppercase;
+}
+
+.notes-action-type:last-child {
+  color: red;
+  padding-left: 50%;
+}
+
+.notes-action-type:hover {
+  cursor: pointer;
 }

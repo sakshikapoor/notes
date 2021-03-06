@@ -1,3 +1,4 @@
+// (state, action) => newState
 const notesReducer = (state = [], action) => {
   switch (action.type) {
     case "ADD_NOTE":
@@ -8,7 +9,15 @@ const notesReducer = (state = [], action) => {
       return state.filter(note => note.id !== action.payload);
 
     case "UPDATE_NOTE":
-      return state;
+      const newState = state.map(note => {
+        const update = action.payload.updation;
+        if (note.id === action.payload.id) {
+          return { ...note, content: update.content, type: update.type };
+        }
+        return { ...note };
+      });
+
+      return newState;
 
     default:
       return state;

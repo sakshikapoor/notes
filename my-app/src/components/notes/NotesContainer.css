@@ -1,47 +1,49 @@
 .note-create {
-    padding: 20px;
-    background: white;
-    border: none;
-    box-shadow: 5px 5px black;
-    border: 1px solid black;
-    cursor: pointer;
-    float: right;
-    margin: 20px;
+  padding: 20px;
+  background: white;
+  border: none;
+  box-shadow: 5px 5px black;
+  border: 1px solid black;
+  cursor: pointer;
+  position: absolute;
+  right: 0px;
+  margin: 20px;
 }
 
 .full-width {
-    width: 100%
+  width: 100%;
 }
 
 .notes-textarea {
-    min-width: 600px;
-    min-height: 200px;
-    font-family: inherit;
-    margin: 5px;
-    border: none;
+  min-width: 600px;
+  min-height: 200px;
+  font-family: inherit;
+  margin: 5px;
+  border: none;
 }
 
 .close {
-   text-align : right;
-   cursor: pointer;
+  text-align: right;
+  cursor: pointer;
 }
 .notes-action {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
 .notes-action-btn {
-    padding: 10px;
-    min-width: 100px;
-    border: none;
-    border-radius: 3px;
-    color: white
+  padding: 10px;
+  min-width: 100px;
+  border: none;
+  border-radius: 3px;
+  color: white;
+  cursor: pointer;
 }
 
 .save {
-    background: green;
+  background: green;
 }
 
-.discard {
-    background: red;
+.trash {
+  background: red;
 }
