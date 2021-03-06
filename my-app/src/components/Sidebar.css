@@ -1,15 +1,16 @@
 .sidebar-selected {
-    background: dimgrey;
-    color: white;
-    font-weight: 600;
+  background: var(--primary-dark-color);
+  color: white;
+  font-weight: 600;
 }
 .sidebar-container {
-    text-align: left;
-    min-width: 200px;
-    background-color: #FFDF6C;
-    min-height: 100vh;
+  text-align: left;
+  min-width: 200px;
+  background-color: var(--bg-color);
+  min-height: 100vh;
 }
 .sidebar-tabs {
-    padding: 20px;
-    cursor: pointer;
+  padding: 20px;
+  cursor: pointer;
+  color: var(--font-color);
 }

@@ -1,6 +1,5 @@
 .note-create {
   padding: 20px;
-  background: white;
   border: none;
   box-shadow: 5px 5px black;
   border: 1px solid black;
@@ -8,10 +7,15 @@
   position: absolute;
   right: 0px;
   margin: 20px;
+  background: var(--primary-dark-color);
+  color: var(--font-color);
+  font-family: monospace;
 }
 
 .full-width {
   width: 100%;
+  background: var(--secondary-bg-color);
+  color: var(--font-color);
 }
 
 .notes-textarea {
@@ -20,6 +24,8 @@
   font-family: inherit;
   margin: 5px;
   border: none;
+  color: var(--font-color);
+  background: var(--secondary-bg-color);
 }
 
 .close {
@@ -38,12 +44,22 @@
   border-radius: 3px;
   color: white;
   cursor: pointer;
+  margin-top: 10px;
 }
 
 .save {
-  background: green;
+  background: var(--primary-success-color);
 }
 
 .trash {
-  background: red;
+  background: #8a0c22;
+}
+
+.modal-container button {
+  font-family: monospace;
+}
+
+.modal-container {
+  padding: 20px;
+  background: var(--bg-color);
 }

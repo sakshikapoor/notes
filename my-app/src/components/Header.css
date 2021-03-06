@@ -2,18 +2,31 @@
   display: flex;
   padding: 20px;
   align-items: center;
-  background-color: #383838;
+  background-color: var(--bg-color);
   color: white;
 }
+
+.header-left {
+  width: 90%;
+  display: flex;
+  padding: 20px;
+  align-items: center;
+  color: var(--font-color);
+}
+
 .header-searchBox {
-  width: 50%;
+  width: 45%;
   margin-left: 100px;
   padding: 10px;
+  background: var(--secondary-bg-color);
+  color: var(--font-color);
 }
+
 .header-hamburger {
   margin: 0px 20px;
   cursor: pointer;
 }
+
 .clear-search {
   cursor: pointer;
   padding: 0px 10px;

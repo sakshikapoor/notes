@@ -1,8 +1,7 @@
-import { useSelector } from "react-redux";
 import React, { useState } from "react";
 import "./NotesContainer.css";
 import Modal from "react-modal";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import noteActions from "../../actions/notesActions";
 import Notes from "./NoteList";
 import modalActions from "../../actions/modalAction";
@@ -14,13 +13,14 @@ const NotesContainer = () => {
   const dispatch = useDispatch();
   const isTrash =
     useSelector(state => state.selectedTab) === "trash" ? true : false;
-
+  const theme = useSelector(state => state.theme);
   const customStyles = {
     content: {
       top: "50%",
       left: "50%",
       right: "auto",
       bottom: "auto",
+      padding: "0px",
       marginRight: "-50%",
       transform: "translate(-50%, -50%)"
     }
@@ -59,11 +59,10 @@ const NotesContainer = () => {
   };
 
   const saveNote = () => {
-    const date = getDate();
     const note = {
       content: noteContent,
       type: NoteCategory.others,
-      date: date,
+      date: getDate(),
       id: Math.floor(Math.random() * 1000000)
     };
     dispatch(noteActions.addNote(note));
@@ -139,19 +138,21 @@ const NotesContainer = () => {
         onRequestClose={closeModal}
         style={customStyles}
       >
-        <div className="close" onClick={closeModal}>
-          &#10005;
-        </div>
-        <textarea
-          className="notes-textarea"
-          placeholder="Write a note.."
-          onChange={handleChange}
-          defaultValue={modalContent}
-          readOnly={isTrash}
-        />
-        <div className="notes-action">
-          {saveOrUpdateButton}
-          {trashOrDeleteButton}
+        <div data-theme={theme} className="modal-container">
+          <div className="close" onClick={closeModal}>
+            &#10005;
+          </div>
+          <textarea
+            className="notes-textarea"
+            placeholder="Write a note.."
+            onChange={handleChange}
+            defaultValue={modalContent}
+            readOnly={isTrash}
+          />
+          <div className="notes-action">
+            {saveOrUpdateButton}
+            {trashOrDeleteButton}
+          </div>
         </div>
       </Modal>
       <Notes />

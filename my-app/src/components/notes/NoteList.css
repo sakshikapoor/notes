@@ -3,15 +3,21 @@
   cursor: pointer;
 }
 
+.empty-notes-placeholder {
+  text-align: left;
+  padding: 25px;
+  color: gray;
+}
+
 .notes-action-container {
   display: flex;
   justify-content: space-between;
-  border-top: 1px solid #e2e2e2;
+  border-top: 1px solid var(--primary-dark-color);
   flex-wrap: wrap;
 }
 
 .notes-action-type {
-  color: blue;
+  color: var(--primary-info-color);
   font-size: 10px;
   cursor: pointer;
   padding: 10px;
@@ -19,7 +25,7 @@
 }
 
 .notes-action-type:last-child {
-  color: red;
+  color: var(--primary-warn-color);
   padding-left: 50%;
 }
 

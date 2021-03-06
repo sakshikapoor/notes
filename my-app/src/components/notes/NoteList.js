@@ -66,7 +66,7 @@ const Notes = () => {
     dispatch(modalActions.openModal(note));
   };
 
-  return filterNotes.map((note, i) => {
+  const notesView = filterNotes.map((note, i) => {
     return (
       <Note
         key={i}
@@ -76,6 +76,12 @@ const Notes = () => {
       />
     );
   });
+
+  return notesView.length !== 0 ? (
+    notesView
+  ) : (
+    <div className="empty-notes-placeholder">No notes created yet</div>
+  );
 };
 
 export default Notes;

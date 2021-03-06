@@ -1,4 +1,30 @@
+:root {
+  --primary-info-color: blue;
+  --primary-warn-color: red;
+  --primary-success-color: green;
+  --primary-dark-color: #d1c6ff;
+  --secondary-color: #4df7ee;
+  --secondary-bg-color: #fff;
+  --font-color: #202020;
+  --bg-color: #e4f8fd;
+  --heading-color: #6eff51;
+}
+
+[data-theme="dark"] {
+  --primary-info-color: aliceblue;
+  --primary-warn-color: pink;
+  --secondary-color: #818cab;
+  --primary-success-color: #1d5424;
+  --primary-dark-color: #2d4150;
+  --secondary-bg-color: #10111d;
+  --font-color: #fff;
+  --bg-color: #161625;
+  --heading-color: #818cab;
+}
+
 .App {
+  font-family: monospace;
+  font-size: 110%;
   text-align: center;
 }
 
@@ -13,30 +39,6 @@
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
 .app-view {
   display: flex;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
 }
