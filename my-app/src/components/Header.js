@@ -36,7 +36,6 @@ const Header = () => {
   };
 
   const onToggle = checked => {
-    console.log("togge value", checked);
     dispatch(setTheme(checked ? "dark" : "light"));
   };
 

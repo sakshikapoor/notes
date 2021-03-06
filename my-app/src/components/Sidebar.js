@@ -31,11 +31,13 @@ const Sidebar = () => {
     );
   });
 
-  if (showSideBar) {
-    return <div className="sidebar-container">{tabViews}</div>;
-  }
+  const sidebarStyle = showSideBar ? {} : { width: "0px" };
 
-  return <div></div>;
+  return (
+    <div className="sidebar-container" style={sidebarStyle}>
+      {tabViews}
+    </div>
+  );
 };
 
 export default Sidebar;
