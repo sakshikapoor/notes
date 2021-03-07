@@ -6,6 +6,7 @@ import noteActions from "../../actions/notesActions";
 import Notes from "./NoteList";
 import modalActions from "../../actions/modalAction";
 import NoteCategory from "../../NoteCategory";
+import { getDate } from "../../utils";
 
 const NotesContainer = () => {
   Modal.setAppElement("#root");
@@ -42,21 +43,6 @@ const NotesContainer = () => {
     modalContent = modal.noteData.content;
     modalId = modal.noteData.id;
   }
-
-  const getDate = () => {
-    let today = new Date();
-    let dd = today.getDate();
-
-    let mm = today.getMonth() + 1;
-    let yyyy = today.getFullYear();
-    if (dd < 10) {
-      dd = "0" + dd;
-    }
-    if (mm < 10) {
-      mm = "0" + mm;
-    }
-    return `${dd}/${mm}/${yyyy}`;
-  };
 
   const saveNote = () => {
     const note = {
