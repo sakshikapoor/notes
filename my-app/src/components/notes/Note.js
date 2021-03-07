@@ -55,7 +55,8 @@ const Note = ({ note, onActionClick, onNoteClick }) => {
       onClick={onNoteClick}
     >
       <div className="note-type">{note.type}</div>
-      <div className="note-content">{note.content}</div>
+      <div className="note-heading">{note.content.heading}</div>
+      <div className="note-content">{note.content.description}</div>
       <div className="note-date-created">
         Date Created: {note.date.toString()}
       </div>

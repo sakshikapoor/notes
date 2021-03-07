@@ -32,3 +32,9 @@
 .notes-action-type:hover {
   cursor: pointer;
 }
+
+.note-heading {
+  font-weight: 600;
+  text-transform: capitalize;
+  font-size: larger;
+}

@@ -13,7 +13,7 @@ const modalReducer = (state = initialModalState, action) => {
       return openState;
 
     case "CLOSE_MODAL":
-      const closeState = { isOpen: false, noteData: state };
+      const closeState = { isOpen: false, noteData: null };
       return closeState;
 
     default:

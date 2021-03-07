@@ -8,9 +8,14 @@ import modalActions from "../../actions/modalAction";
 import NoteCategory from "../../NoteCategory";
 import { getDate } from "../../utils";
 
+const NoteContent = {
+  heading: "",
+  description: ""
+};
+
 const NotesContainer = () => {
   Modal.setAppElement("#root");
-  const [noteContent, updateNoteContent] = useState("");
+  const [noteContent, updateNoteContent] = useState(NoteContent);
   const dispatch = useDispatch();
   const isTrash =
     useSelector(state => state.selectedTab) === "trash" ? true : false;
@@ -36,11 +41,12 @@ const NotesContainer = () => {
 
   const modal = useSelector(state => state.modal);
   const modalIsOpen = modal.isOpen;
+  let heading, description;
   const isNewNote = modal.noteData === null;
-  let modalContent;
   let modalId;
   if (!isNewNote) {
-    modalContent = modal.noteData.content;
+    heading = modal.noteData.content.heading;
+    description = modal.noteData.content.description;
     modalId = modal.noteData.id;
   }
 
@@ -55,8 +61,14 @@ const NotesContainer = () => {
     closeModal();
   };
 
-  const handleChange = event => {
-    updateNoteContent(event.target.value);
+  const handleChange = (event, type) => {
+    const currentNote = { ...noteContent };
+    if (type === "heading") {
+      currentNote.heading = event.target.value;
+    } else if (type === "description") {
+      currentNote.description = event.target.value;
+    }
+    updateNoteContent(currentNote);
   };
 
   const updateNote = () => {
@@ -128,13 +140,22 @@ const NotesContainer = () => {
           <div className="close" onClick={closeModal}>
             &#10005;
           </div>
-          <textarea
-            className="notes-textarea"
-            placeholder="Write a note.."
-            onChange={handleChange}
-            defaultValue={modalContent}
-            readOnly={isTrash}
-          />
+          <div className="notes-container">
+            <input
+              className="notes-heading"
+              type="text"
+              placeholder="Heading"
+              onChange={e => handleChange(e, "heading")}
+              defaultValue={heading}
+            />
+            <textarea
+              className="notes-textarea"
+              placeholder="Write a note.."
+              onChange={e => handleChange(e, "description")}
+              defaultValue={description}
+              readOnly={isTrash}
+            />
+          </div>
           <div className="notes-action">
             {saveOrUpdateButton}
             {trashOrDeleteButton}

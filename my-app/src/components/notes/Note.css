@@ -12,7 +12,7 @@
 }
 
 .note-content {
-  height: 30px;
+  height: 20px;
   overflow: hidden;
   text-overflow: ellipsis;
 }
