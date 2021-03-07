@@ -35,7 +35,9 @@ const Notes = () => {
 
   if (searchTerm.length) {
     // filter notes based on search term
-    filterNotes = notes.filter(note => note.content.includes(searchTerm));
+    filterNotes = notes.filter(note =>
+      Object.values(note.content).includes(searchTerm)
+    );
   } else {
     // filter notes based on selected tab
     filterNotes = notes.filter(note => {
