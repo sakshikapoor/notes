@@ -4,26 +4,22 @@ const tabs = [
   {
     id: "notes",
     name: "Notes",
-    selected: true,
-    visibleCategories: [NoteCategory.pinned, NoteCategory.others]
+    selected: true
   },
   {
     id: "archive",
     name: "Archive",
-    selected: false,
-    visibleCategories: [NoteCategory.archive]
+    selected: false
   },
   {
     id: "pinned",
     name: "Pinned",
-    selected: false,
-    visibleCategories: [NoteCategory.pinned]
+    selected: false
   },
   {
     id: "trash",
     name: "Trash",
-    selected: false,
-    visibleCategories: [NoteCategory.trash]
+    selected: false
   }
 ];
 export default tabs;

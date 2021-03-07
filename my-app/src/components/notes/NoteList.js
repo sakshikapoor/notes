@@ -77,11 +77,25 @@ const Notes = () => {
     );
   });
 
-  return notesView.length !== 0 ? (
-    notesView
-  ) : (
-    <div className="empty-notes-placeholder">No notes created yet</div>
-  );
+  let view = null;
+
+  if (notesView.length !== 0) {
+    view = notesView;
+  } else if (searchTerm.length !== 0) {
+    view = (
+      <div className="empty-notes-placeholder">No search results found</div>
+    );
+  } else if (selectedTab === "pinned" || selectedTab === "archive") {
+    view = (
+      <div className="empty-notes-placeholder">
+        No {selectedTab} notes found
+      </div>
+    );
+  } else {
+    view = <div className="empty-notes-placeholder">No notes created yet</div>;
+  }
+
+  return view;
 };
 
 export default Notes;

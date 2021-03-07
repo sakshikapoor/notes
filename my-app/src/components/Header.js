@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./Header.css";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { toggle } from "../actions/sidebarActions";
 import searchActions from "../actions/searchAction";
 import Toggle from "./Toggle";
@@ -8,7 +8,9 @@ import { setTheme } from "../actions/themeActions";
 
 const Header = () => {
   const dispatch = useDispatch();
-  const [searchTerm, setSearchTerm] = useState("");
+  const search = useSelector(state => state.search);
+  const [searchTerm, setSearchTerm] = useState(search);
+  const theme = useSelector(state => state.theme);
 
   const toggleSideBar = () => {
     dispatch(toggle());
@@ -68,7 +70,7 @@ const Header = () => {
       </div>
 
       <div className="header-toggle-btn header-right">
-        <Toggle onToggle={onToggle} />
+        <Toggle onToggle={onToggle} isChecked={theme === "dark"} />
       </div>
     </div>
   );
