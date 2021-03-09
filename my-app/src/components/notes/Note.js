@@ -28,7 +28,7 @@ const Note = ({ note, onActionClick, onNoteClick }) => {
     const label =
       action.category === note.type ? action.negativeLabel : action.label;
 
-    // category that WILL be applied is action is clicked
+    // category that _will_ be applied is action is clicked
     const category =
       action.category === note.type ? NoteCategory.others : action.category;
 

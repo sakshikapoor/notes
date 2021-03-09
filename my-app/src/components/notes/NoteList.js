@@ -25,15 +25,30 @@ const notesToVisbilityMapping = [
   }
 ];
 
+const EmptyPlaceholder = ({ isSearchActive, activeTab }) => {
+  let message = "";
+
+  if (isSearchActive) {
+    message = "No search results found";
+  } else if (activeTab === "pinned" || activeTab === "archive") {
+    message = `No ${activeTab} notes found`;
+  } else {
+    message = "No notes created yet";
+  }
+
+  return <div className="empty-notes-placeholder">{message}</div>;
+};
+
 const Notes = () => {
   const selectedTab = useSelector(state => state.selectedTab);
   const notes = useSelector(state => state.notes);
   const searchTerm = useSelector(state => state.search);
   const dispatch = useDispatch();
 
-  let filterNotes;
+  let filterNotes = [];
 
-  if (searchTerm.length) {
+  const isSearchActive = searchTerm.length !== 0;
+  if (isSearchActive) {
     // filter notes based on search term
     filterNotes = notes.filter(note =>
       Object.values(note.content).includes(searchTerm)
@@ -79,25 +94,17 @@ const Notes = () => {
     );
   });
 
-  let view = null;
 
   if (notesView.length !== 0) {
-    view = notesView;
-  } else if (searchTerm.length !== 0) {
-    view = (
-      <div className="empty-notes-placeholder">No search results found</div>
-    );
-  } else if (selectedTab === "pinned" || selectedTab === "archive") {
-    view = (
-      <div className="empty-notes-placeholder">
-        No {selectedTab} notes found
-      </div>
-    );
+    return notesView;
   } else {
-    view = <div className="empty-notes-placeholder">No notes created yet</div>;
+    return (
+      <EmptyPlaceholder
+        isSearchActive={isSearchActive}
+        activeTab={selectedTab}
+      />
+    );
   }
-
-  return view;
 };
 
 export default Notes;

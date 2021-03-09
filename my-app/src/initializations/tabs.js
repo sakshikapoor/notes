@@ -1,5 +1,3 @@
-import NoteCategory from "../NoteCategory";
-
 const tabs = [
   {
     id: "notes",
@@ -22,4 +20,5 @@ const tabs = [
     selected: false
   }
 ];
+
 export default tabs;
