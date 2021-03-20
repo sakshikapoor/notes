@@ -16,6 +16,13 @@ const modalReducer = (state = initialModalState, action) => {
       const closeState = { isOpen: false, noteData: null };
       return closeState;
 
+    case "UPDATE_MODAL_CONTENT":
+      const updated = {
+        ...state, noteData: { ...state.noteData, content: { heading: action.payload.heading, description: action.payload.description } }
+      }
+
+      return updated;
+
     default:
       return state;
   }

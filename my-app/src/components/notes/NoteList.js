@@ -79,17 +79,13 @@ const NoteList = () => {
     dispatch(noteActions.updateNote(note.id, updatedNote));
   };
 
-  const openModal = note => {
-    dispatch(modalActions.openModal(note));
-  };
-
   const notesView = filterNotes.map((note, i) => {
     return (
       <Note
         key={i}
         note={note}
         onActionClick={type => updateType(note, type)}
-        onNoteClick={() => openModal(note)}
+        onNoteClick={() => dispatch(modalActions.openModal(note))}
       />
     );
   });

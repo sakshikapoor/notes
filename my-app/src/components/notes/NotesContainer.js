@@ -7,13 +7,12 @@ import modalActions from "../../actions/modalAction";
 import NoteCategory from "../../NoteCategory";
 import { getDate } from "../../utils";
 
-const NoteContent = {
+const EmptyNoteContent = {
   heading: "",
   description: ""
 };
 
 const NotesContainer = () => {
-  const [noteContent, updateNoteContent] = useState(NoteContent);
   const dispatch = useDispatch();
   const isTrash =
     useSelector(state => state.selectedTab) === "trash" ? true : false;
@@ -28,21 +27,11 @@ const NotesContainer = () => {
 
   const modal = useSelector(state => state.modal);
   const modalIsOpen = modal.isOpen;
-  let defaultHeading, defaultDescription;
   const isNewNote = modal.noteData === null;
-  let modalId;
-  if (!isNewNote) {
-    defaultHeading = modal.noteData.content.heading;
-    defaultDescription = modal.noteData.content.description;
-    modalId = modal.noteData.id;
-  } else {
-    defaultHeading = '';
-    defaultDescription = '';
-  }
 
   const saveNote = () => {
     const note = {
-      content: noteContent,
+      content: modal.noteData,
       type: NoteCategory.others,
       date: getDate(),
       id: Math.floor(Math.random() * 1000000)
@@ -52,35 +41,35 @@ const NotesContainer = () => {
   };
 
   const handleChange = (event, type) => {
-    const currentNote = { ...noteContent };
+    const updatedNote = { ...modal.noteData.content };
     if (type === "heading") {
-      currentNote.heading = event.target.value;
+      updatedNote.heading = event.target.value;
     } else if (type === "description") {
-      currentNote.description = event.target.value;
+      updatedNote.description = event.target.value;
     }
-    updateNoteContent(currentNote);
+    dispatch(modalActions.updateModalContent(updatedNote));
   };
 
   const updateNote = () => {
     const note = {
-      content: noteContent,
+      content: modal.noteData.content,
       type: isNewNote ? "notes" : modal.noteData.type
     };
-    dispatch(noteActions.updateNote(modalId, note));
+    dispatch(noteActions.updateNote(modal.noteData.id, note));
     closeModal();
   };
 
   const deleteNote = () => {
     const note = {
-      content: noteContent,
+      content: modal.noteData,
       type: "trash"
     };
-    dispatch(noteActions.updateNote(modalId, note));
+    dispatch(noteActions.updateNote(modal.noteData.id, note));
     closeModal();
   };
 
   const deleteNotePermanently = () => {
-    dispatch(noteActions.deleteNote(modalId));
+    dispatch(noteActions.deleteNote(modal.noteData.id));
     closeModal();
   };
 
@@ -116,6 +105,8 @@ const NotesContainer = () => {
     );
   }
 
+  const noteContent = modal.noteData ? modal.noteData.content : EmptyNoteContent
+
   return (
     <div className="full-width">
       <button className="note-create" onClick={openModal}>
@@ -130,14 +121,14 @@ const NotesContainer = () => {
             type="text"
             placeholder="Heading"
             onChange={e => handleChange(e, "heading")}
-            defaultValue={defaultHeading}
+            value={noteContent.heading}
             readOnly={isTrash && !isNewNote}
           />
           <textarea
             className="notes-textarea"
             placeholder="Write a note.."
+            value={noteContent.description}
             onChange={e => handleChange(e, "description")}
-            defaultValue={defaultDescription}
             readOnly={isTrash && !isNewNote}
           />
         </div>

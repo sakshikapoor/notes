@@ -11,4 +11,11 @@ const closeModal = () => {
   };
 };
 
-export default { openModal, closeModal };
+const updateModalContent = (noteData = { heading: "", description: "" }) => {
+  return {
+    type: "UPDATE_MODAL_CONTENT",
+    payload: noteData
+  };
+};
+
+export default { openModal, closeModal, updateModalContent };
