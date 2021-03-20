@@ -1,6 +1,7 @@
-.sidebar-selected {
+.sidebar-tabs.sidebar-selected {
   background: var(--primary-dark-color);
   color: white;
+  color: var(--font-color);
   font-weight: 600;
 }
 
@@ -14,6 +15,9 @@
 
 .sidebar-tabs {
   padding: 20px;
+  border: none;
+  width: 100%;
   cursor: pointer;
+  background: unset;
   color: var(--font-color);
 }

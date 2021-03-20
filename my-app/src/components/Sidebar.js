@@ -17,7 +17,7 @@ const Sidebar = () => {
 
   const tabViews = tabs.map(tab => {
     return (
-      <div
+      <button
         key={tab.id}
         onClick={() => selectThisTab(tab.id)}
         className={
@@ -27,7 +27,7 @@ const Sidebar = () => {
         }
       >
         {tab.name}
-      </div>
+      </button>
     );
   });
 
