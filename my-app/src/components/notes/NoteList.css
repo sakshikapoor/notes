@@ -39,8 +39,10 @@
   font-weight: 600;
   text-transform: capitalize;
   font-size: larger;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
-@media only screen and (max-width: 1200px) {
+@media only screen and (max-width: 1280px) {
   .notes-action-type:last-child {
     padding-left: unset;
   }  

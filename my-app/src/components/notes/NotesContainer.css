@@ -1,5 +1,7 @@
 .note-create {
   padding: 20px;
+  position: fixed;
+  bottom: 10px;
   border: none;
   box-shadow: 5px 5px black;
   border: 1px solid black;
@@ -14,12 +16,13 @@
 }
 
 .note-create:after {
-  content: 'Create new Note'
+  content: 'Create New Note'
 }
 
 
 .full-width {
   width: 100%;
+  padding-right: 110px;
   background: var(--secondary-bg-color);
   color: var(--font-color);
 }
@@ -101,7 +104,7 @@
   display: none;
 }
 
-@media only screen and (max-width: 1000px) {
+@media only screen and (max-width: 1080px) {
   .note-create {
     border-radius: 50%;
     height: 40px;
@@ -113,6 +116,10 @@
 
   .note-create:after {
     content: '+';
+  }
+
+  .full-width {
+    padding-right: unset;
   }
   
 }
