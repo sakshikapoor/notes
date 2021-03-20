@@ -20,6 +20,7 @@
   color: var(--primary-info-color);
   font-size: 10px;
   cursor: pointer;
+  font-family: monospace;
   padding: 10px;
   background: unset;
   border: none;

@@ -28,13 +28,16 @@ const NotesContainer = () => {
 
   const modal = useSelector(state => state.modal);
   const modalIsOpen = modal.isOpen;
-  let heading, description;
+  let defaultHeading, defaultDescription;
   const isNewNote = modal.noteData === null;
   let modalId;
   if (!isNewNote) {
-    heading = modal.noteData.content.heading;
-    description = modal.noteData.content.description;
+    defaultHeading = modal.noteData.content.heading;
+    defaultDescription = modal.noteData.content.description;
     modalId = modal.noteData.id;
+  } else {
+    defaultHeading = '';
+    defaultDescription = '';
   }
 
   const saveNote = () => {
@@ -96,7 +99,7 @@ const NotesContainer = () => {
     );
   }
   let trashOrDeleteButton = null;
-  if (isTrash) {
+  if (isTrash && !isNewNote) {
     trashOrDeleteButton = (
       <button
         className="notes-action-btn trash"
@@ -127,14 +130,15 @@ const NotesContainer = () => {
             type="text"
             placeholder="Heading"
             onChange={e => handleChange(e, "heading")}
-            defaultValue={heading}
+            defaultValue={defaultHeading}
+            readOnly={isTrash && !isNewNote}
           />
           <textarea
             className="notes-textarea"
             placeholder="Write a note.."
             onChange={e => handleChange(e, "description")}
-            defaultValue={description}
-            readOnly={isTrash}
+            defaultValue={defaultDescription}
+            readOnly={isTrash && !isNewNote}
           />
         </div>
         <div className="notes-action">
