@@ -107,6 +107,8 @@
     height: 40px;
     width: 40px;
     padding: 10px;
+    position: fixed;
+    bottom: 0;
   }
 
   .note-create:after {

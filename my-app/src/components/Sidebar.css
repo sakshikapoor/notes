@@ -21,3 +21,11 @@
   background: unset;
   color: var(--font-color);
 }
+
+@media only screen and (max-width: 512px) {
+  .sidebar-container {
+    z-index: 2;
+    position: absolute;
+    transition: unset;
+  }
+}

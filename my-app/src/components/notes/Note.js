@@ -33,7 +33,7 @@ const Note = ({ note, onActionClick, onNoteClick }) => {
       action.category === note.type ? NoteCategory.others : action.category;
 
     return (
-      <div
+      <button
         key={action.id}
         className="notes-action-type"
         onClick={e => {
@@ -43,7 +43,7 @@ const Note = ({ note, onActionClick, onNoteClick }) => {
         }}
       >
         [{label}]
-      </div>
+      </button>
     );
   });
 

@@ -18,7 +18,7 @@
 }
 
 .NotesContainer {
-  width: 30%;
+  width: 300px;
   margin: 30px;
   padding: 20px;
   border: 1px solid rgba(0, 0, 0, 0.1);
@@ -38,5 +38,11 @@
   }
   100% {
     opacity: 1;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .NotesContainer {
+    width: -webkit-fill-available;
   }
 }

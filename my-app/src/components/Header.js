@@ -43,11 +43,17 @@ const Header = () => {
 
   return (
     <div className="header-container">
-      <div className="header-left">
-        <div className="header-hamburger" onClick={toggleSideBar}>
-          ☰
-        </div>
+      <div className="header-top">
         <h1>NOTES</h1>
+        <div className="header-toggle-btn">
+          <Toggle onToggle={onToggle} isChecked={theme === "dark"} />
+        </div>
+      </div>
+      <div className="header-bottom">
+        <button className="header-hamburger" onClick={toggleSideBar}>
+          ☰
+        </button>
+
         <input
           type="text"
           value={searchTerm}
@@ -65,12 +71,8 @@ const Header = () => {
             &#10005;
           </div>
         ) : (
-          ""
-        )}
-      </div>
-
-      <div className="header-toggle-btn header-right">
-        <Toggle onToggle={onToggle} isChecked={theme === "dark"} />
+            ""
+          )}
       </div>
     </div>
   );
