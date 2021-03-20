@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./NotesContainer.css";
 import { useDispatch, useSelector } from "react-redux";
 import noteActions from "../../actions/notesActions";
-import Notes from "./NoteList";
+import NoteList from "./NoteList";
 import modalActions from "../../actions/modalAction";
 import NoteCategory from "../../NoteCategory";
 import { getDate } from "../../utils";
@@ -116,7 +116,6 @@ const NotesContainer = () => {
   return (
     <div className="full-width">
       <button className="note-create" onClick={openModal}>
-        Create a note
       </button>
       <div data-theme={theme} className={"modal-container " + (modalIsOpen ? "show-modal" : "hide-modal")} >
         <div className="close" onClick={closeModal}>
@@ -143,7 +142,7 @@ const NotesContainer = () => {
           {trashOrDeleteButton}
         </div>
       </div>
-      <Notes />
+      <NoteList />
     </div>
   );
 };

@@ -6,11 +6,17 @@
   cursor: pointer;
   position: absolute;
   right: 0px;
+  z-index: 1;
   margin: 20px;
   background: var(--primary-dark-color);
   color: var(--font-color);
   font-family: monospace;
 }
+
+.note-create:after {
+  content: 'Create new Note'
+}
+
 
 .full-width {
   width: 100%;
@@ -19,9 +25,10 @@
 }
 
 .notes-textarea {
-  min-width: 600px;
   padding: 10px;
   min-height: 200px;
+  width: -webkit-fill-available;
+  resize: none;
   font-family: inherit;
   margin: 5px;
   border: none;
@@ -40,7 +47,7 @@
 
 .notes-action-btn {
   padding: 10px;
-  min-width: 100px;
+  min-width: 20%;
   border: none;
   border-radius: 3px;
   color: white;
@@ -68,14 +75,18 @@
   left: 50%;
   z-index: 2;
   transform: translate(-50%, -50%);
+  width: 70%;
+  max-width: 600px;
 }
 .notes-container {
-  display: inline-grid;
+  width: 100%;
+  position: relative;
 }
 .notes-heading {
   padding: 10px;
   margin: 5px;
   border: none;
+  width: -webkit-fill-available;
   font-size: 16px;
   text-transform: capitalize;
   font-weight: 600;
@@ -88,4 +99,18 @@
 
 .hide-modal {
   display: none;
+}
+
+@media only screen and (max-width: 600px) {
+  .note-create {
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+    padding: 10px;
+  }
+
+  .note-create:after {
+    content: '+';
+  }
+  
 }

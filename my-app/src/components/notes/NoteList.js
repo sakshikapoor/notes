@@ -39,7 +39,7 @@ const EmptyPlaceholder = ({ isSearchActive, activeTab }) => {
   return <div className="empty-notes-placeholder">{message}</div>;
 };
 
-const Notes = () => {
+const NoteList = () => {
   const selectedTab = useSelector(state => state.selectedTab);
   const notes = useSelector(state => state.notes);
   const searchTerm = useSelector(state => state.search);
@@ -107,4 +107,4 @@ const Notes = () => {
   }
 };
 
-export default Notes;
+export default NoteList;
