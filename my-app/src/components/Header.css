@@ -27,11 +27,14 @@
   margin: 0px 20px;
   cursor: pointer;
   border: none;
+  color: var(--font-color);
   background: unset;
 }
 
 .clear-search {
   cursor: pointer;
+  line-height: 35px;
+  transform: translateX(-30px);
   padding: 0px 10px;
 }
 .header-top {

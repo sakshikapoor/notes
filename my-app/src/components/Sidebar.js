@@ -31,7 +31,7 @@ const Sidebar = () => {
     );
   });
 
-  const sidebarStyle = showSideBar ? {} : { 'width': "0px", 'position': 'unset', 'z-index': 'unset' };
+  const sidebarStyle = showSideBar ? {} : { 'width': "0px", 'position': 'unset', 'zIndex': 'unset' };
 
   return (
     <div className="sidebar-container" style={sidebarStyle}>

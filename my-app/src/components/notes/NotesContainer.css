@@ -2,11 +2,9 @@
   padding: 20px;
   position: fixed;
   bottom: 10px;
-  border: none;
   box-shadow: 5px 5px black;
   border: 1px solid black;
   cursor: pointer;
-  position: absolute;
   right: 0px;
   z-index: 1;
   margin: 20px;
@@ -22,7 +20,6 @@
 
 .full-width {
   width: 100%;
-  padding-right: 110px;
   background: var(--secondary-bg-color);
   color: var(--font-color);
 }
@@ -117,9 +114,4 @@
   .note-create:after {
     content: '+';
   }
-
-  .full-width {
-    padding-right: unset;
-  }
-  
 }

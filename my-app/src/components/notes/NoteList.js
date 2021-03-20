@@ -51,7 +51,7 @@ const NoteList = () => {
   if (isSearchActive) {
     // filter notes based on search term
     filterNotes = notes.filter(note =>
-      Object.values(note.content).includes(searchTerm)
+      Object.values(note.content).find(data => data.toLowerCase().includes(searchTerm.toLowerCase()))
     );
   } else {
     // filter notes based on selected tab

@@ -22,14 +22,7 @@ const Header = () => {
 
   const handleKeyUp = e => {
     // search on enter
-    if (e.keyCode == 13) {
-      dispatch(searchActions.openSearch(searchTerm));
-    }
-  };
-
-  const onBlurHandler = () => {
-    setSearchTerm("");
-    dispatch(searchActions.closeSearch());
+    dispatch(searchActions.openSearch(searchTerm));
   };
 
   const clearSearch = () => {
@@ -51,7 +44,7 @@ const Header = () => {
       </div>
       <div className="header-bottom">
         <button className="header-hamburger" onClick={toggleSideBar}>
-          ☰
+          &#x2630;
         </button>
 
         <input
@@ -60,10 +53,9 @@ const Header = () => {
           name="searchbox"
           className="header-searchBox"
           id="myInput"
-          placeholder="Type and press enter to search..."
+          placeholder="Type to search..."
           onChange={handleChange}
           onKeyUp={handleKeyUp}
-          onBlur={onBlurHandler}
         />
         {/* show search clear icon only if search is active */}
         {searchTerm ? (
