@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import "./NotesContainer.css";
-import Modal from "react-modal";
 import { useDispatch, useSelector } from "react-redux";
 import noteActions from "../../actions/notesActions";
 import Notes from "./NoteList";
@@ -14,23 +13,11 @@ const NoteContent = {
 };
 
 const NotesContainer = () => {
-  Modal.setAppElement("#root");
   const [noteContent, updateNoteContent] = useState(NoteContent);
   const dispatch = useDispatch();
   const isTrash =
     useSelector(state => state.selectedTab) === "trash" ? true : false;
   const theme = useSelector(state => state.theme);
-  const customStyles = {
-    content: {
-      top: "50%",
-      left: "50%",
-      right: "auto",
-      bottom: "auto",
-      padding: "0px",
-      marginRight: "-50%",
-      transform: "translate(-50%, -50%)"
-    }
-  };
   const openModal = () => {
     dispatch(modalActions.openModal());
   };
@@ -131,37 +118,31 @@ const NotesContainer = () => {
       <button className="note-create" onClick={openModal}>
         Create a note
       </button>
-      <Modal
-        isOpen={modalIsOpen}
-        onRequestClose={closeModal}
-        style={customStyles}
-      >
-        <div data-theme={theme} className="modal-container">
-          <div className="close" onClick={closeModal}>
-            &#10005;
+      <div data-theme={theme} className={"modal-container " + (modalIsOpen ? "show-modal" : "hide-modal")} >
+        <div className="close" onClick={closeModal}>
+          &#10005;
           </div>
-          <div className="notes-container">
-            <input
-              className="notes-heading"
-              type="text"
-              placeholder="Heading"
-              onChange={e => handleChange(e, "heading")}
-              defaultValue={heading}
-            />
-            <textarea
-              className="notes-textarea"
-              placeholder="Write a note.."
-              onChange={e => handleChange(e, "description")}
-              defaultValue={description}
-              readOnly={isTrash}
-            />
-          </div>
-          <div className="notes-action">
-            {saveOrUpdateButton}
-            {trashOrDeleteButton}
-          </div>
+        <div className="notes-container">
+          <input
+            className="notes-heading"
+            type="text"
+            placeholder="Heading"
+            onChange={e => handleChange(e, "heading")}
+            defaultValue={heading}
+          />
+          <textarea
+            className="notes-textarea"
+            placeholder="Write a note.."
+            onChange={e => handleChange(e, "description")}
+            defaultValue={description}
+            readOnly={isTrash}
+          />
         </div>
-      </Modal>
+        <div className="notes-action">
+          {saveOrUpdateButton}
+          {trashOrDeleteButton}
+        </div>
+      </div>
       <Notes />
     </div>
   );
