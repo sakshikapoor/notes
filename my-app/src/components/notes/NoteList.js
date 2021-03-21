@@ -8,7 +8,7 @@ import NoteCategory from "../../NoteCategory";
 
 const notesToVisbilityMapping = [
   {
-    id: "notes",
+    id: "all",
     visibleCategories: [NoteCategory.pinned, NoteCategory.others]
   },
   {
