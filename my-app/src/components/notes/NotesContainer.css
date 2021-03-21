@@ -66,18 +66,6 @@
 .modal-container button {
   font-family: monospace;
 }
-
-.modal-container {
-  padding: 20px;
-  background: var(--bg-color);
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  z-index: 2;
-  transform: translate(-50%, -50%);
-  width: 70%;
-  max-width: 600px;
-}
 .notes-container {
   width: 100%;
   position: relative;
@@ -93,13 +81,7 @@
   color: var(--font-color);
   background: var(--secondary-bg-color);
 }
-.show-modal {
-  display: block
-}
 
-.hide-modal {
-  display: none;
-}
 
 @media only screen and (max-width: 1080px) {
   .note-create {

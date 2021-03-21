@@ -6,6 +6,7 @@ import NoteList from "./NoteList";
 import modalActions from "../../actions/modalAction";
 import NoteCategory from "../../NoteCategory";
 import { getDate } from "../../utils";
+import Modal from './Modal';
 
 const NotesContainer = () => {
   const EmptyNoteContent = {
@@ -16,7 +17,6 @@ const NotesContainer = () => {
   const selectedTab = useSelector(state => state.selectedTab)
   const dispatch = useDispatch();
   const isTrash = selectedTab === "trash"
-  const theme = useSelector(state => state.theme);
   const openModal = () => {
     dispatch(modalActions.openModal(null, true));
   };
@@ -26,7 +26,7 @@ const NotesContainer = () => {
   };
 
   const modal = useSelector(state => state.modal);
-  const modalIsOpen = modal.isOpen;
+  const isModalOpen = modal.isOpen;
 
   const saveNote = () => {
     const note = {
@@ -110,10 +110,7 @@ const NotesContainer = () => {
     <div className="full-width">
       <button className="note-create" onClick={openModal}>
       </button>
-      <div data-theme={theme} className={"modal-container " + (modalIsOpen ? "show-modal" : "hide-modal")} >
-        <div className="close" onClick={closeModal}>
-          &#10005;
-          </div>
+      <Modal isModalOpen={isModalOpen} onClose={() => closeModal()}>
         <div className="notes-container">
           <input
             className="notes-heading"
@@ -135,9 +132,9 @@ const NotesContainer = () => {
           {saveOrUpdateButton}
           {trashOrDeleteButton}
         </div>
-      </div>
+      </Modal>
       <NoteList category={selectedTab} />
-    </div>
+    </div >
   );
 };
 
