@@ -1,33 +1,27 @@
 import React from "react";
 import "./Sidebar.css";
 import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
 import tabs from "../initializations/tabs";
-import selectTab from "../actions/tabSelection";
+import { Link } from 'react-router-dom'
 
 const Sidebar = () => {
   const showSideBar = useSelector(state => state.sideBar);
   const selectedTab = useSelector(state => state.selectedTab);
 
-  const dispatch = useDispatch();
-
-  const selectThisTab = id => {
-    dispatch(selectTab(id));
-  };
-
   const tabViews = tabs.map(tab => {
     return (
-      <button
-        key={tab.id}
-        onClick={() => selectThisTab(tab.id)}
-        className={
-          selectedTab === tab.id
-            ? "sidebar-tabs sidebar-selected "
-            : "sidebar-tabs"
-        }
-      >
-        {tab.name}
-      </button>
+      <Link to={`/notes/${tab.id}`}>
+        <button
+          key={tab.id}
+          className={
+            selectedTab === tab.id
+              ? "sidebar-tabs sidebar-selected "
+              : "sidebar-tabs"
+          }
+        >
+          {tab.name}
+        </button>
+      </Link>
     );
   });
 

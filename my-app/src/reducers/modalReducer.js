@@ -8,7 +8,8 @@ const modalReducer = (state = initialModalState, action) => {
     case "OPEN_MODAL":
       const openState = {
         isOpen: true,
-        noteData: action.payload
+        noteData: action.payload.note,
+        isNew: action.payload.isNew
       };
       return openState;
 

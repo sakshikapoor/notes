@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 import modalActions from "../../actions/modalAction";
 import Note from "./Note";
 import NoteCategory from "../../NoteCategory";
+import selectTab from '../../actions/tabSelection'
 
 const notesToVisbilityMapping = [
   {
@@ -39,11 +40,13 @@ const EmptyPlaceholder = ({ isSearchActive, activeTab }) => {
   return <div className="empty-notes-placeholder">{message}</div>;
 };
 
-const NoteList = () => {
+const NoteList = ({ category }) => {
+  const dispatch = useDispatch();
+  dispatch(selectTab(category))
+
   const selectedTab = useSelector(state => state.selectedTab);
   const notes = useSelector(state => state.notes);
   const searchTerm = useSelector(state => state.search);
-  const dispatch = useDispatch();
 
   let filterNotes = [];
 
@@ -51,7 +54,9 @@ const NoteList = () => {
   if (isSearchActive) {
     // filter notes based on search term
     filterNotes = notes.filter(note =>
-      Object.values(note.content).find(data => data.toLowerCase().includes(searchTerm.toLowerCase()))
+      Object.values(note.content).find(data => {
+        return data.toLowerCase().includes(searchTerm.toLowerCase())
+      })
     );
   } else {
     // filter notes based on selected tab
@@ -85,7 +90,7 @@ const NoteList = () => {
         key={i}
         note={note}
         onActionClick={type => updateType(note, type)}
-        onNoteClick={() => dispatch(modalActions.openModal(note))}
+        onNoteClick={() => dispatch(modalActions.openModal(note, false))}
       />
     );
   });

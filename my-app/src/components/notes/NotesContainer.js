@@ -7,18 +7,18 @@ import modalActions from "../../actions/modalAction";
 import NoteCategory from "../../NoteCategory";
 import { getDate } from "../../utils";
 
-const EmptyNoteContent = {
-  heading: "",
-  description: ""
-};
+const NotesContainer = ({ match }) => {
+  const EmptyNoteContent = {
+    heading: "",
+    description: ""
+  };
 
-const NotesContainer = () => {
   const dispatch = useDispatch();
   const isTrash =
     useSelector(state => state.selectedTab) === "trash" ? true : false;
   const theme = useSelector(state => state.theme);
   const openModal = () => {
-    dispatch(modalActions.openModal());
+    dispatch(modalActions.openModal(null, true));
   };
 
   const closeModal = () => {
@@ -27,11 +27,10 @@ const NotesContainer = () => {
 
   const modal = useSelector(state => state.modal);
   const modalIsOpen = modal.isOpen;
-  const isNewNote = modal.noteData === null;
 
   const saveNote = () => {
     const note = {
-      content: modal.noteData,
+      content: modal.noteData.content,
       type: NoteCategory.others,
       date: getDate(),
       id: Math.floor(Math.random() * 1000000)
@@ -41,7 +40,7 @@ const NotesContainer = () => {
   };
 
   const handleChange = (event, type) => {
-    const updatedNote = { ...modal.noteData.content };
+    const updatedNote = modal.noteData ? { ...modal.noteData.content } : EmptyNoteContent;
     if (type === "heading") {
       updatedNote.heading = event.target.value;
     } else if (type === "description") {
@@ -53,7 +52,7 @@ const NotesContainer = () => {
   const updateNote = () => {
     const note = {
       content: modal.noteData.content,
-      type: isNewNote ? "notes" : modal.noteData.type
+      type: modal.isNew ? "notes" : modal.noteData.type
     };
     dispatch(noteActions.updateNote(modal.noteData.id, note));
     closeModal();
@@ -61,7 +60,7 @@ const NotesContainer = () => {
 
   const deleteNote = () => {
     const note = {
-      content: modal.noteData,
+      content: modal.noteData.content,
       type: "trash"
     };
     dispatch(noteActions.updateNote(modal.noteData.id, note));
@@ -74,7 +73,7 @@ const NotesContainer = () => {
   };
 
   let saveOrUpdateButton = null;
-  if (isNewNote) {
+  if (modal.isNew) {
     saveOrUpdateButton = (
       <button className="notes-action-btn save" onClick={() => saveNote()}>
         SAVE
@@ -88,7 +87,7 @@ const NotesContainer = () => {
     );
   }
   let trashOrDeleteButton = null;
-  if (isTrash && !isNewNote) {
+  if (isTrash && !modal.isNew) {
     trashOrDeleteButton = (
       <button
         className="notes-action-btn trash"
@@ -122,14 +121,14 @@ const NotesContainer = () => {
             placeholder="Heading"
             onChange={e => handleChange(e, "heading")}
             value={noteContent.heading}
-            readOnly={isTrash && !isNewNote}
+            readOnly={isTrash && !modal.isNew}
           />
           <textarea
             className="notes-textarea"
             placeholder="Write a note.."
             value={noteContent.description}
             onChange={e => handleChange(e, "description")}
-            readOnly={isTrash && !isNewNote}
+            readOnly={isTrash && !modal.isNew}
           />
         </div>
         <div className="notes-action">
@@ -137,7 +136,7 @@ const NotesContainer = () => {
           {trashOrDeleteButton}
         </div>
       </div>
-      <NoteList />
+      <NoteList category={match.params.category} />
     </div>
   );
 };

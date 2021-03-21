@@ -22,4 +22,5 @@ const updateNote = (noteId, updation) => {
   };
 };
 
-export default { addNote, deleteNote, updateNote };
+const actions = { addNote, deleteNote, updateNote };
+export default actions;

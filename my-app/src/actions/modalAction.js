@@ -1,7 +1,7 @@
-const openModal = (selectedNote = null) => {
+const openModal = (selectedNote = null, isNew) => {
   return {
     type: "OPEN_MODAL",
-    payload: selectedNote
+    payload: { note: selectedNote, isNew: isNew }
   };
 };
 
@@ -18,4 +18,5 @@ const updateModalContent = (noteData = { heading: "", description: "" }) => {
   };
 };
 
-export default { openModal, closeModal, updateModalContent };
+const actions = { openModal, closeModal, updateModalContent };
+export default actions

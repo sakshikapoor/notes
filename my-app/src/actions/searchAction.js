@@ -11,4 +11,5 @@ const closeSearch = () => {
   };
 };
 
-export default { openSearch, closeSearch };
+const actions = { openSearch, closeSearch };
+export default actions
