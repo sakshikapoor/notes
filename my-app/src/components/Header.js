@@ -45,7 +45,7 @@ const Header = () => {
     dispatch(setTheme(checked ? "dark" : "light"));
   };
 
-  const handleKeyUp = (e) => {
+  const handleKeyUp = () => {
     debouncedOpenSearch(dispatch, searchTerm)
   }
 
