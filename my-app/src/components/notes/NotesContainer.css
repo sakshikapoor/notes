@@ -36,10 +36,6 @@
   background: var(--secondary-bg-color);
 }
 
-.close {
-  text-align: right;
-  cursor: pointer;
-}
 .notes-action {
   display: flex;
   justify-content: space-between;

@@ -6,7 +6,7 @@ const NotFound = function () {
       <div>Invalid URL</div>
       <div>
         <a href="/notes/all">Click here</a> to visit home page
-          </div>
+      </div>
     </div>
   )
 }

@@ -17,3 +17,11 @@
 .hide-modal {
     display: none;
 }
+.close {
+    cursor: pointer;
+    border: none;
+    background: unset;
+}
+.close-btn-container {
+    text-align: right;
+}
