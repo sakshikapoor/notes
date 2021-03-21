@@ -3,7 +3,7 @@ import "./Sidebar.css";
 import { useDispatch, useSelector } from "react-redux";
 import tabs from "../initializations/tabs";
 import { Link, useHistory, useParams } from 'react-router-dom'
-import selectTab from '../actions/tabSelection';
+import tabActions from '../actions/tabActions';
 
 const Sidebar = () => {
   const showSideBar = useSelector(state => state.sideBar);
@@ -21,7 +21,7 @@ const Sidebar = () => {
   // side effect in useEffect
   useEffect(() => {
     if (tabToSelect) {
-      dispatch(selectTab(tabToSelect))
+      dispatch(tabActions.selectTab(tabToSelect))
     } else if (!category) {
       // handles /notes
       history.push(`/notes/${tabs[0].id}`)

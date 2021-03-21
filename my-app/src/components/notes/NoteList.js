@@ -2,7 +2,7 @@ import { useSelector } from "react-redux";
 import "./NoteList.css";
 import noteActions from "../../actions/notesActions";
 import { useDispatch } from "react-redux";
-import modalActions from "../../actions/modalAction";
+import modalActions from "../../actions/modalActions";
 import Note from "./Note";
 import NoteCategory from "../../NoteCategory";
 

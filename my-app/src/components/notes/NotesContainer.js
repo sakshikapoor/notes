@@ -3,13 +3,13 @@ import "./NotesContainer.css";
 import { useDispatch, useSelector } from "react-redux";
 import noteActions from "../../actions/notesActions";
 import NoteList from "./NoteList";
-import modalActions from "../../actions/modalAction";
+import modalActions from "../../actions/modalActions";
 import NoteCategory from "../../NoteCategory";
 import { getDate } from "../../utils";
 import Modal from './Modal';
 
 const NotesContainer = () => {
-  const EmptyNoteContent = {
+  const emptyNoteContent = {
     heading: "",
     description: ""
   };
@@ -17,6 +17,7 @@ const NotesContainer = () => {
   const selectedTab = useSelector(state => state.selectedTab)
   const dispatch = useDispatch();
   const isTrash = selectedTab === "trash"
+
   const openModal = () => {
     dispatch(modalActions.openModal(null, true));
   };
@@ -40,7 +41,7 @@ const NotesContainer = () => {
   };
 
   const handleChange = (event, type) => {
-    const updatedNote = modal.noteData ? { ...modal.noteData.content } : EmptyNoteContent;
+    const updatedNote = modal.noteData ? { ...modal.noteData.content } : emptyNoteContent;
     if (type === "heading") {
       updatedNote.heading = event.target.value;
     } else if (type === "description") {
@@ -104,13 +105,13 @@ const NotesContainer = () => {
     );
   }
 
-  const noteContent = modal.noteData ? modal.noteData.content : EmptyNoteContent
+  const noteContent = modal.noteData ? modal.noteData.content : emptyNoteContent
 
   return (
     <div className="full-width">
       <button className="note-create" onClick={openModal}>
       </button>
-      <Modal isModalOpen={isModalOpen} onClose={() => closeModal()}>
+      <Modal isModalOpen={isModalOpen} onClose={closeModal}>
         <div className="notes-container">
           <input
             className="notes-heading"
@@ -133,6 +134,7 @@ const NotesContainer = () => {
           {trashOrDeleteButton}
         </div>
       </Modal>
+
       <NoteList category={selectedTab} />
     </div >
   );

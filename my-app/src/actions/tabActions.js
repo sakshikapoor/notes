@@ -7,4 +7,5 @@ const selectTab = tabId => {
   };
 };
 
-export default selectTab;
+const actions = { selectTab }
+export default actions

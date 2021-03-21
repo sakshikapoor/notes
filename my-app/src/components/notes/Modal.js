@@ -2,14 +2,14 @@ import './Modal.css';
 
 const Modal = ({ isModalOpen, onClose, children }) => {
 
-    return (
-        <div className={"modal-container " + (isModalOpen ? "show-modal" : "hide-modal")} >
-            <div className="close-btn-container">
-                <button className="close" onClick={onClose}>&#10005;</button>
-            </div>
-            {children}
-        </div>
-    );
+  return (
+    <div className={"modal-container " + (isModalOpen ? "show-modal" : "hide-modal")} >
+      <div className="close-btn-container">
+        <button className="close" onClick={onClose}>&#10005;</button>
+      </div>
+      {children}
+    </div>
+  );
 }
 
 
