@@ -57,7 +57,7 @@ const Note = ({ note, onActionClick, onNoteClick }) => {
       <div className="note-heading">{note.content.heading}</div>
       <div className="note-content">{note.content.description}</div>
       <div className="note-date-created">
-        Date Created: {note.date.toString()}
+        Created: {note.date.toString()}
       </div>
       <div className="notes-action-container">{actionBar}</div>
     </div>
