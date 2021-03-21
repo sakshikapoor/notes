@@ -6,24 +6,35 @@ import searchActions from "../actions/searchAction";
 import Toggle from "./Toggle";
 import { setTheme } from "../actions/themeActions";
 
+const debounce = (callback, wait) => {
+  let timeoutId = null;
+  return (...args) => {
+    window.clearTimeout(timeoutId);
+    timeoutId = window.setTimeout(() => {
+      callback.apply(null, args);
+    }, wait);
+  };
+}
+
+const openSearch = (dispatch, searchTerm) => {
+  dispatch(searchActions.openSearch(searchTerm));
+}
+
+const debouncedOpenSearch = debounce(openSearch, 500);
+
 const Header = () => {
   const dispatch = useDispatch();
   const search = useSelector(state => state.search);
   const [searchTerm, setSearchTerm] = useState(search);
   const theme = useSelector(state => state.theme);
-
   const toggleSideBar = () => {
     dispatch(toggle());
   };
 
-  const handleChange = e => {
+  const handleChange = (e) => {
     setSearchTerm(e.target.value);
   };
 
-  const handleKeyUp = e => {
-    // search on enter
-    dispatch(searchActions.openSearch(searchTerm));
-  };
 
   const clearSearch = () => {
     dispatch(searchActions.closeSearch());
@@ -33,6 +44,10 @@ const Header = () => {
   const onToggle = checked => {
     dispatch(setTheme(checked ? "dark" : "light"));
   };
+
+  const handleKeyUp = (e) => {
+    debouncedOpenSearch(dispatch, searchTerm)
+  }
 
   return (
     <div className="header-container">

@@ -37,7 +37,6 @@ const Note = ({ note, onActionClick, onNoteClick }) => {
         key={action.id}
         className="notes-action-type"
         onClick={e => {
-          e.preventDefault();
           e.stopPropagation();
           onActionClick(category);
         }}
