@@ -5,7 +5,6 @@ import { useDispatch } from "react-redux";
 import modalActions from "../../actions/modalAction";
 import Note from "./Note";
 import NoteCategory from "../../NoteCategory";
-import selectTab from '../../actions/tabSelection'
 
 const notesToVisbilityMapping = [
   {
@@ -40,11 +39,9 @@ const EmptyPlaceholder = ({ isSearchActive, activeTab }) => {
   return <div className="empty-notes-placeholder">{message}</div>;
 };
 
-const NoteList = ({ category }) => {
+const NoteList = ({ category: selectedTab }) => {
   const dispatch = useDispatch();
-  dispatch(selectTab(category))
 
-  const selectedTab = useSelector(state => state.selectedTab);
   const notes = useSelector(state => state.notes);
   const searchTerm = useSelector(state => state.search);
 

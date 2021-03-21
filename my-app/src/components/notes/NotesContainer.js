@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "./NotesContainer.css";
 import { useDispatch, useSelector } from "react-redux";
 import noteActions from "../../actions/notesActions";
@@ -7,15 +7,15 @@ import modalActions from "../../actions/modalAction";
 import NoteCategory from "../../NoteCategory";
 import { getDate } from "../../utils";
 
-const NotesContainer = ({ match }) => {
+const NotesContainer = () => {
   const EmptyNoteContent = {
     heading: "",
     description: ""
   };
 
+  const selectedTab = useSelector(state => state.selectedTab)
   const dispatch = useDispatch();
-  const isTrash =
-    useSelector(state => state.selectedTab) === "trash" ? true : false;
+  const isTrash = selectedTab === "trash"
   const theme = useSelector(state => state.theme);
   const openModal = () => {
     dispatch(modalActions.openModal(null, true));
@@ -136,7 +136,7 @@ const NotesContainer = ({ match }) => {
           {trashOrDeleteButton}
         </div>
       </div>
-      <NoteList category={match.params.category} />
+      <NoteList category={selectedTab} />
     </div>
   );
 };

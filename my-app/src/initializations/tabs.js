@@ -1,6 +1,6 @@
 const tabs = [
   {
-    id: "notes",
+    id: "all",
     name: "Notes",
     selected: true
   },
