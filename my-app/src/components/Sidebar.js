@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./Sidebar.css";
 import { useDispatch, useSelector } from "react-redux";
 import tabs from "../initializations/tabs";
@@ -14,21 +14,23 @@ const Sidebar = () => {
   const urlParams = useParams()
   const category = urlParams.category
 
-
   const tabToSelect = tabs
     .map(tab => tab.id)  // ['all', 'pinned', ...]
     .find(id => id === category)
 
+  // side effect in useEffect
+  useEffect(() => {
+    if (tabToSelect) {
+      dispatch(selectTab(tabToSelect))
+    } else if (!category) {
+      // handles /notes
+      history.push(`/notes/${tabs[0].id}`)
+    } else {
+      // handles /notes/gibberish
+      history.push('/urlnotfound')
+    }
+  })
 
-  if (tabToSelect) {
-    dispatch(selectTab(tabToSelect))
-  } else if (!category) {
-    // handles /notes
-    history.push(`/notes/${tabs[0].id}`)
-  } else {
-    // handles /notes/gibberish
-    history.push('/urlnotfound')
-  }
 
   const tabViews = tabs.map(tab => {
     return (
