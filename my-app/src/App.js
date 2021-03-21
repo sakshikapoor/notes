@@ -15,14 +15,12 @@ function App() {
       <div className="app-view">
         <Router>
           <Switch>
-            <Route path="/notes" exact component={Sidebar} />
-            <Route path="/notes/:category" component={Sidebar} />
-            <Route path="/" exact component={Sidebar} />
-            <Redirect to="/urlnotfound" />
-          </Switch>
-          <Switch>
+            <Route path={['/notes', '/notes/:category', '/']} exact>
+              <Sidebar />
+              <NotesContainer />
+            </Route>
             <Route path="/urlnotfound" component={NotFound} />
-            <Route path="/" component={NotesContainer} />
+            <Redirect to="/urlnotfound" />
           </Switch>
         </Router>
       </div>

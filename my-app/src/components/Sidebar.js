@@ -2,15 +2,17 @@ import React from "react";
 import "./Sidebar.css";
 import { useDispatch, useSelector } from "react-redux";
 import tabs from "../initializations/tabs";
-import { Link, useHistory } from 'react-router-dom'
+import { Link, useHistory, useParams } from 'react-router-dom'
 import selectTab from '../actions/tabSelection';
 
-const Sidebar = ({ match }) => {
+const Sidebar = () => {
   const showSideBar = useSelector(state => state.sideBar);
   const selectedTab = useSelector(state => state.selectedTab);
   const dispatch = useDispatch();
   const history = useHistory()
-  const category = match.params.category
+
+  const urlParams = useParams()
+  const category = urlParams.category
 
 
   const tabToSelect = tabs
