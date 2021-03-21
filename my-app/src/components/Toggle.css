@@ -1,12 +1,8 @@
 .toggle-switch {
   display: inline-block;
-  height: 34px;
+  height: 25px;
   position: relative;
-  width: 60px;
-}
-
-.toggle-switch input {
-  display: none;
+  width: 42px;
 }
 
 .toggle-slider {
@@ -22,13 +18,13 @@
 
 .toggle-slider:before {
   background-color: var(--bg-color);
-  bottom: 4px;
+  bottom: 3px;
   content: "";
-  height: 26px;
-  left: 4px;
+  height: 20px;
+  left: 3px;
   position: absolute;
   transition: 0.4s;
-  width: 26px;
+  width: 20px;
 }
 
 .toggle-container input:checked + .toggle-slider {
@@ -36,7 +32,7 @@
 }
 
 .toggle-container input:checked + .toggle-slider:before {
-  transform: translateX(26px);
+  transform: translateX(17px);
 }
 
 .toggle-slider.round {

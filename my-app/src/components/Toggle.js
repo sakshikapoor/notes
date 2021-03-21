@@ -8,6 +8,7 @@ const Toggle = ({ onToggle, isChecked }) => {
         <input
           type="checkbox"
           id="checkbox"
+          aria-label="toggle-dark-mode"
           checked={isChecked}
           onChange={e => onToggle(e.target.checked)}
         />
