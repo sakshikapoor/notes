@@ -29,7 +29,7 @@
 
 .notes-action-type:last-child {
   color: var(--primary-warn-color);
-  padding-left: 40%;
+  margin-left: 40%;
 }
 
 .notes-action-type:hover {
@@ -45,6 +45,6 @@
 }
 @media only screen and (max-width: 1280px) {
   .notes-action-type:last-child {
-    padding-left: unset;
+    margin-left: unset;
   }  
 }

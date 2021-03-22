@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import tabs from "../initializations/tabs";
 import { Link, useHistory, useParams } from 'react-router-dom'
 import tabActions from '../actions/tabActions';
+import searchActions from '../actions/searchAction';
 
 const Sidebar = () => {
   const showSideBar = useSelector(state => state.sideBar);
@@ -31,19 +32,23 @@ const Sidebar = () => {
     }
   })
 
+  const removeSearch = () => {
+    dispatch(searchActions.closeSearch());
+  }
 
   const tabViews = tabs.map(tab => {
     return (
-      <Link to={`/notes/${tab.id}`} key={tab.id}>
-        <button
+      <Link to={`/notes/${tab.id}`} key={tab.id} className="sidebar-link">
+        <div
           className={
             selectedTab === tab.id
               ? "sidebar-tabs sidebar-selected "
               : "sidebar-tabs"
           }
+          onClick={removeSearch}
         >
           {tab.name}
-        </button>
+        </div>
       </Link>
     );
   });

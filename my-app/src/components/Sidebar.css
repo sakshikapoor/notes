@@ -16,11 +16,18 @@
 .sidebar-tabs {
   padding: 20px;
   border: none;
-  width: 100%;
   cursor: pointer;
   font-family: monospace;
   background: unset;
   color: var(--font-color);
+}
+
+.sidebar-link {
+  text-decoration: none;
+}
+
+.sidebar-link:focus > div {
+  border: 1px solid var(--primary-dark-color)
 }
 
 @media only screen and (max-width: 512px) {
