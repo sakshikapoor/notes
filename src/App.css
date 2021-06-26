@@ -1,0 +1,54 @@
+:root {
+  --primary-info-color: blue;
+  --primary-warn-color: red;
+  --primary-success-color: green;
+  --primary-dark-color: #d1c6ff;
+  --secondary-color: #4df7ee;
+  --secondary-bg-color: #fff;
+  --font-color: #202020;
+  --bg-color: #e4f8fd;
+  --heading-color: #6eff51;
+}
+
+[data-theme="dark"] {
+  --primary-info-color: aliceblue;
+  --primary-warn-color: pink;
+  --secondary-color: #818cab;
+  --primary-success-color: #1d5424;
+  --primary-dark-color: #2d4150;
+  --secondary-bg-color: #10111d;
+  --font-color: #e6e6e6;
+  --bg-color: #161625;
+  --heading-color: #818cab;
+}
+
+.App {
+  font-family: monospace;
+  font-size: 110%;
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+:focus {
+  outline: var(--primary-dark-color) solid 2px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.app-view {
+  display: flex;
+  height: 100%;
+}
+
+html, body, #root, #App {
+  width: 100%;
+  height: 100%;
+}

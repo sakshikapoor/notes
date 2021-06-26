@@ -1,0 +1,50 @@
+.delete {
+  float: right;
+  cursor: pointer;
+}
+
+.empty-notes-placeholder {
+  text-align: left;
+  padding: 25px;
+  color: gray;
+}
+
+.notes-action-container {
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid var(--primary-dark-color);
+  flex-wrap: wrap;
+}
+
+.notes-action-type {
+  color: var(--primary-info-color);
+  font-size: 10px;
+  cursor: pointer;
+  font-family: monospace;
+  padding: 10px;
+  background: unset;
+  border: none;
+  text-transform: uppercase;
+}
+
+.notes-action-type:last-child {
+  color: var(--primary-warn-color);
+  margin-left: 40%;
+}
+
+.notes-action-type:hover {
+  cursor: pointer;
+}
+
+.note-heading {
+  font-weight: 600;
+  text-transform: capitalize;
+  font-size: larger;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+@media only screen and (max-width: 1280px) {
+  .notes-action-type:last-child {
+    margin-left: unset;
+  }  
+}

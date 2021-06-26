@@ -1,0 +1,95 @@
+.note-create {
+  padding: 20px;
+  position: fixed;
+  bottom: 10px;
+  box-shadow: 5px 5px black;
+  border: 1px solid black;
+  cursor: pointer;
+  right: 0px;
+  z-index: 1;
+  margin: 20px;
+  background: var(--primary-dark-color);
+  color: var(--font-color);
+  font-family: monospace;
+}
+
+.note-create:after {
+  content: 'Create New Note'
+}
+
+
+.full-width {
+  width: 100%;
+  background: var(--secondary-bg-color);
+  color: var(--font-color);
+}
+
+.notes-textarea {
+  padding: 10px;
+  min-height: 200px;
+  width: -webkit-fill-available;
+  resize: none;
+  font-family: inherit;
+  margin: 5px;
+  border: none;
+  color: var(--font-color);
+  background: var(--secondary-bg-color);
+}
+
+.notes-action {
+  display: flex;
+  justify-content: space-between;
+}
+
+.notes-action-btn {
+  padding: 10px;
+  min-width: 20%;
+  border: none;
+  border-radius: 3px;
+  color: white;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.save {
+  background: var(--primary-success-color);
+}
+
+.trash {
+  background: #8a0c22;
+}
+
+.modal-container button {
+  font-family: monospace;
+}
+.notes-container {
+  width: 100%;
+  position: relative;
+}
+.notes-heading {
+  padding: 10px;
+  margin: 5px;
+  border: none;
+  width: -webkit-fill-available;
+  font-size: 16px;
+  text-transform: capitalize;
+  font-weight: 600;
+  color: var(--font-color);
+  background: var(--secondary-bg-color);
+}
+
+
+@media only screen and (max-width: 1080px) {
+  .note-create {
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+  }
+
+  .note-create:after {
+    content: '+';
+  }
+}

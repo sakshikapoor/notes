@@ -1,0 +1,39 @@
+.sidebar-tabs.sidebar-selected {
+  background: var(--primary-dark-color);
+  color: white;
+  color: var(--font-color);
+  font-weight: 600;
+}
+
+.sidebar-container {
+  text-align: left;
+  width: 200px;
+  background-color: var(--bg-color);
+  min-height: 100vh;
+  transition: width 0.2s;
+}
+
+.sidebar-tabs {
+  padding: 20px;
+  border: none;
+  cursor: pointer;
+  font-family: monospace;
+  background: unset;
+  color: var(--font-color);
+}
+
+.sidebar-link {
+  text-decoration: none;
+}
+
+.sidebar-link:focus > div {
+  border: 1px solid var(--primary-dark-color)
+}
+
+@media only screen and (max-width: 512px) {
+  .sidebar-container {
+    z-index: 2;
+    position: absolute;
+    transition: unset;
+  }
+}
