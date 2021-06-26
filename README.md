@@ -23,3 +23,7 @@ Note taking app, made with React/Redux.
 3. `npm install` to install dependencies
 4. `npm start`
 5. Visit localhost:3000 to see the app in action
+
+## Live Version
+
+https://sakshire-notes.herokuapp.com/notes/all
